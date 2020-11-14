@@ -60,9 +60,9 @@ class TuringMachine(object):
             self.current_state = transition["state"]
             self.__tape[self.head_position] = transition["value"]
 
-            if transition["dir"] == "R":
+            if transition["direc"] == "R":
                 self.head_position += 1
-            elif transition["dir"] == "L":
+            elif transition["direc"] == "L":
                 self.head_position -= 1
             else:
                 pass
