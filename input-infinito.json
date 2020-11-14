@@ -1,0 +1,25 @@
+{
+    "q": ["conjunto de estados"],
+    "E": ["alfabeto de entrada"],
+    "F": ["alfabeto de cinta"],
+    "initial_state": "inicial",
+    "transition_function": {
+        "0": {
+            "state": "transicion",
+            "value": "1",
+            "dir": "R"
+        },
+        "1": {
+            "state": "transicion",
+            "value": "0",
+            "dir": "R"
+        },
+        " ": {
+            "state": "aceptacion",
+            "value": " ",
+            "dir": "N"
+        }
+    },
+    "final_states": ["aceptacion", "rechazo"],
+    "tape": "010011 "
+}
