@@ -10,7 +10,7 @@ from prettytable import PrettyTable
 import json
 
 class Tape(object):
-    blank_symbol = " "
+    blank_symbol = "-"
 
     def __init__(self, tape_string):
         self.tape = dict((enumerate(tape_string)))
@@ -36,10 +36,11 @@ class TuringMachine(object):
 
     def import_tape(self, filename):
         configutations = self.read_json(filename)
-        self.__tape = Tape(configutations["tape"])
+        self.possible_states = configutations["q"]
         self.current_state = configutations["initial_state"]
-        self.final_states = configutations["final_states"]
         self.transition_function = configutations["transition_function"]
+        self.final_states = configutations["final_states"]
+        self.__tape = Tape(configutations["tape"])
 
     @property
     def actual_tape(self):
@@ -51,8 +52,11 @@ class TuringMachine(object):
 
     def step(self):
         actual_bit = self.__tape[self.head_position]
-        if self.transition_function[actual_bit]:
-            transition = self.transition_function[actual_bit]
+        transition_index = "{},{}".format(self.current_state, actual_bit)
+        if transition_index in self.transition_function and \
+            self.current_state in self.possible_states:
+            
+            transition = self.transition_function[transition_index]
             self.current_state = transition["state"]
             self.__tape[self.head_position] = transition["value"]
 
@@ -84,9 +88,10 @@ class TuringMachine(object):
 # ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~ 
 # ==================================================================
 
+turing = TuringMachine("input-ejemplo.json")
 # turing = TuringMachine("input-aceptacion.json")
 # turing = TuringMachine("input-rechazo.json")
-turing = TuringMachine("input-infinito.json")
+# turing = TuringMachine("input-infinito.json")
 turing.run()
 
 """

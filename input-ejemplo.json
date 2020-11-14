@@ -5,77 +5,77 @@
         "q1,0": {
             "state": "q2",
             "value": "-",
-            "direc": "R"
+            "dir": "R"
         },
         "q1,-": {
             "state": "qR",
             "value": "-",
-            "direc": "R"
+            "dir": "R"
         },
         "q1,x": {
             "state": "qR",
             "value": "x",
-            "direc": "R"
+            "dir": "R"
         },
         "q2,x": {
             "state": "q2",
             "value": "x",
-            "direc": "R"
+            "dir": "R"
         },
         "q2,-": {
             "state": "qA",
             "value": "-",
-            "direc": "R"
+            "dir": "R"
         },
         "q2,0": {
             "state": "q3",
             "value": "x",
-            "direc": "R"
+            "dir": "R"
         },
         "q3,-": {
             "state": "q5",
             "value": "-",
-            "direc": "L"
+            "dir": "L"
         },
         "q3,x": {
             "state": "q3",
             "value": "x",
-            "direc": "R"
+            "dir": "R"
         },
         "q5,0": {
             "state": "q5",
             "value": "0",
-            "direc": "L"
+            "dir": "L"
         },
         "q5,x": {
             "state": "q5",
             "value": "x",
-            "direc": "L"
+            "dir": "L"
         },
         "q5,-": {
             "state": "q2",
             "value": "-",
-            "direc": "R"
+            "dir": "R"
         },
         "q3,0": {
             "state": "q4",
             "value": "0",
-            "direc": "R"
+            "dir": "R"
         },
         "q4,0": {
             "state": "q3",
             "value": "x",
-            "direc": "R"
+            "dir": "R"
         },
         "q4,x": {
             "state": "q4",
             "value": "x",
-            "direc": "R"
+            "dir": "R"
         },
         "q4,-": {
             "state": "qR",
             "value": "-",
-            "direc": "R"
+            "dir": "R"
         }
     },
     "final_states": ["qA", "qR"],
