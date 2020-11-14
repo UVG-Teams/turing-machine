@@ -9,6 +9,8 @@ Maquina de Turing
 from prettytable import PrettyTable
 import json
 
+# Referencia
+# https://www.python-course.eu/turing_machine.php
 class Tape(object):
     blank_symbol = "-"
 
