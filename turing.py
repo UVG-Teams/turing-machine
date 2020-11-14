@@ -74,6 +74,7 @@ class TuringMachine(object):
         cont = 0
         while True:
             my_table.add_row([cont, self.current_state, self.actual_tape])
+            print(self.current_state, self.actual_tape)
             if self.is_final: return print(my_table)
             self.step()
             cont += 1
@@ -97,18 +98,6 @@ turing = TuringMachine("input-ejemplo.json")
 turing.run()
 
 """
-b. dise;ar maquina de turing
-
-c. configuracion que llegue a aceptacion
-d. archivo de salida de configuraciones
-
-e. configuracion que llegue a rechazo
-f. archivo de salida de configuraciones
-
-g. configuracion que llegue a ciclo infinito
-h. archivo de salida de configuraciones
-
-
 Configuracion de salida:
 estado actual
 ubicacion de la cabeza actual
