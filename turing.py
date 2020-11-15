@@ -55,8 +55,8 @@ class TuringMachine(object):
     def step(self):
         actual_bit = self.__tape[self.head_position]
         transition_index = "{},{}".format(self.current_state, actual_bit)
-        if transition_index in self.transition_function and \
-            self.current_state in self.possible_states:
+        if transition_index in self.transition_function \
+            and self.current_state in self.possible_states:
             
             transition = self.transition_function[transition_index]
             self.current_state = transition["state"]
@@ -70,25 +70,36 @@ class TuringMachine(object):
                 pass
 
     def run(self):
-        my_table = PrettyTable(["Id", "Estado", "Tape"])
+        my_table = PrettyTable(["Id", "Configuracion"])
         cont = 0
-        while True:
-            my_table.add_row([cont, self.current_state, self.actual_tape])
-            print(self.current_state, self.actual_tape)
-            if self.is_final: return print(my_table)
-            self.step()
-            cont += 1
+        with open('output.txt', 'w') as output_file:
+            while True:
+                actual_setting = ""
+                for i in range(len(self.actual_tape)):
+                    if self.head_position == i:
+                        actual_setting += self.current_state
+                    actual_setting += self.actual_tape[i]
+                    if self.head_position == len(self.actual_tape) \
+                        and (i + 1) == len(self.actual_tape):
+                        actual_setting += self.current_state
+
+                print(actual_setting)
+                my_table.add_row([cont, actual_setting])
+                output_file.write(actual_setting + "\n")
+
+                if self.is_final: return print(my_table)
+                self.step()
+                cont += 1
 
     def read_json(self, filename):
         with open(filename) as my_json:
-            content = json.load(my_json)
-            return content
-
-
+            return json.load(my_json)
 
 
 # ==================================================================
-# ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~ 
+# ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~
+# ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~
+# ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~   .   ~
 # ==================================================================
 
 turing = TuringMachine("input-ejemplo.json")
@@ -96,9 +107,3 @@ turing = TuringMachine("input-ejemplo.json")
 # turing = TuringMachine("input-rechazo.json")
 # turing = TuringMachine("input-infinito.json")
 turing.run()
-
-"""
-Configuracion de salida:
-estado actual
-ubicacion de la cabeza actual
-"""
